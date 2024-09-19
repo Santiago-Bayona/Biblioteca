@@ -7,7 +7,7 @@ public class Prestamo {
     public LocalDate fechaprestamo;
     public LocalDate fechaentrega;
     public double costoprestamo;
-    LinkedList<Libro>libros;
+    Collection<Libro>libros;
 
     public Prestamo(String codigo, LocalDate fechaprestamo, LocalDate fechaentrega, double costoprestamo) {
         this.codigo = codigo;
@@ -50,11 +50,11 @@ public class Prestamo {
         this.costoprestamo = costoprestamo;
     }
 
-    public LinkedList<Libro> getLibros() {
+    public Collection<Libro> getLibros() {
         return libros;
     }
 
-    public void setLibros(LinkedList<Libro> libros) {
+    public void setLibros(Collection<Libro> libros) {
         this.libros = libros;
     }
 

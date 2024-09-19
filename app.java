@@ -12,6 +12,7 @@ public class app {
         SantoDomingo.agregarEstudiante(estudiente1);
         SantoDomingo.agregarBibliotecario(bibliotecario1);
         SantoDomingo.agregarLibro(libro1);
+        SantoDomingo.ConsultaLibro("1478");
 
         System.out.println(SantoDomingo);
 

@@ -102,6 +102,13 @@ public class Biblioteca {
             libros.add(libro);
         }
     }
+    public void ConsultaLibro(String codigo) {
+        for (Libro libro : libros) {
+            if (libro.getCodigo().equals(codigo)) {
+                System.out.println(libro);
+            }
+        }
+    }
 
 
     @Override

@@ -108,6 +108,13 @@ public class Libro {
     public void setEstado(Libro.Estado estado) {
         this.Estado = estado;
     }
+    public void disminuirUnidades() {
+        if (UnidadesDisponibles > 0) {
+            UnidadesDisponibles--;
+        } else {
+            System.out.println("No hay unidades disponibles");
+        }
+    }
 
 
     @Override

@@ -187,6 +187,13 @@ public class Biblioteca {
             System.out.println("No se encontró el préstamo con el código proporcionado.");
         }
     }
+    public void añadirlibroprestamo(Libro libro, LocalDate fechaPrestamo) {
+         if (libro.getUnidadesDisponibles() > 0) {
+            libro.disminuirUnidades();
+            prestamos.add(new Prestamo(libro.getISBN(), fechaPrestamo, LocalDate.now(), 0.0));
+            System.out.println("El libro " + libro.getISBN() + " ha sido prestado con éxito.");
+    }
+    }
 
 
 

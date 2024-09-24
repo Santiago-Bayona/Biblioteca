@@ -137,15 +137,25 @@ public class Biblioteca {
         }
         return true;
     }
-    public void reemplazarLibro(String codigoViejo, Libro nuevoLibro) {
-        for (int i = 0; i < libros.size(); i++) {
-            if (libros.get(i).getCodigo().equals(codigoViejo)) {
-                libros.set(i, nuevoLibro);
-                System.out.println("Libro reemplazado con éxito.");
-                return;
+   public boolean reemplazarLibro(String ISBN, Libro nuevoLibro) {
+        if (ISBN == null || nuevoLibro == null) {
+            System.out.println("ISBN o libro nuevo no pueden ser nulos.");
+            return false;
+        }
+    
+        Iterator<Libro> iterator = libros.iterator();
+        
+        while (iterator.hasNext()) {
+            Libro libroActual = iterator.next();
+            if (libroActual.getISBN() != null && libroActual.getISBN().equals(ISBN)) {
+                iterator.remove(); // Eliminar el libro actual
+                libros.add(nuevoLibro); // Agregar el nuevo libro
+                System.out.println("Libro con ISBN " + ISBN + " reemplazado por " + nuevoLibro);
+                return true;
             }
         }
-        System.out.println("Libro no encontrado.");
+        System.out.println("No se encontró el libro con ISBN " + ISBN);
+        return false;
     }
 
 

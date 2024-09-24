@@ -157,6 +157,22 @@ public class Biblioteca {
         System.out.println("No se encontró el libro con ISBN " + ISBN);
         return false;
     }
+    public void CostoPrestamo(String codigo) {
+        Long diferencia = null;
+        double costo = 0;
+        for (Prestamo prestamo : prestamos) {
+            if (prestamo.getCodigo().equals(codigo)) {
+                diferencia = ChronoUnit.DAYS.between(prestamo.getFechaprestamo(), prestamo.getFechaentrega());
+                costo = prestamo.getCostoprestamo();
+                break;
+            }
+        }
+        if (diferencia != null) {
+            System.out.println("Costo del préstamo = " + (diferencia * costo) + " pesos");
+        } else {
+            System.out.println("No se encontró el préstamo con el código proporcionado.");
+        }
+    }
 
 
 

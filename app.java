@@ -20,9 +20,9 @@ public class app {
         SantoDomingo.reemplazarLibro("14898",nuevoLibro);
         SantoDomingo.CostoPrestamo("1787");
         SantoDomingo.añadirlibroprestamo(libro1, LocalDate.now());
-
-        System.out.println(SantoDomingo);
         SantoDomingo.consultalibro("1478");
+        System.out.println(SantoDomingo);
+      
 
     }
 }

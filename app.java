@@ -20,7 +20,7 @@ public class app {
         Libro nuevoLibro= new Libro("1478","14898","gabo","el pricipito-edicion especial","Norma", LocalDate.of(1998,4,7),7, Libro.Estado.regular);
         SantoDomingo.reemplazarLibro("14898",nuevoLibro);
         SantoDomingo.CostoPrestamo("1787");
-
+        SantoDomingo.añadirlibroprestamo(libro1, LocalDate.now());
         SantoDomingo.ConsultaLibro("1478");
         System.out.println(SantoDomingo);
     }

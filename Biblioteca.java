@@ -3,10 +3,8 @@ package Biblioteca;
 
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.LinkedList;
-import java.util.List;
+import java.time.temporal.ChronoUnit;
+import java.util.*;
 
 public class Biblioteca {
     public String Nombre;
@@ -115,13 +113,29 @@ public class Biblioteca {
             libros.add(libro);
         }
     }
-    public Libro ConsultaLibro(String codigo) {
+    public void Consultalibro(String codigo) {
+        Boolean centinela =false;
         for (Libro libro : libros) {
             if (libro.getCodigo().equals(codigo)) {
-                return libro;
+                System.out.println("El libro consultado es: " + libro);
+                centinela=true;
             }
         }
-        return null;
+        if(centinela == false){
+            System.out.println("El libro con ese codigo no existe");
+        }
+    }
+    public void ConsultaPrestamo(String codigo) {
+        Boolean centinela =false;
+        for (Prestamo prestamo : prestamos) {
+            if (prestamo.getCodigo().equals(codigo)) {
+                System.out.println("El prestamo consultado es: " + prestamo);
+                centinela=true;
+            }
+        }
+        if(centinela == false){
+            System.out.println("El prestamo con ese codigo no existe");
+        }
     }
 
     public void agregarPrestamo(Prestamo prestamo){
@@ -137,14 +151,14 @@ public class Biblioteca {
         }
         return true;
     }
-   public boolean reemplazarLibro(String ISBN, Libro nuevoLibro) {
+    public boolean reemplazarLibro(String ISBN, Libro nuevoLibro) {
         if (ISBN == null || nuevoLibro == null) {
             System.out.println("ISBN o libro nuevo no pueden ser nulos.");
             return false;
         }
-    
+
         Iterator<Libro> iterator = libros.iterator();
-        
+
         while (iterator.hasNext()) {
             Libro libroActual = iterator.next();
             if (libroActual.getISBN() != null && libroActual.getISBN().equals(ISBN)) {
@@ -173,6 +187,10 @@ public class Biblioteca {
             System.out.println("No se encontró el préstamo con el código proporcionado.");
         }
     }
+
+
+
+
 
 
 

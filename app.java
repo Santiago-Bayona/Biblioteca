@@ -16,7 +16,7 @@ public class app {
         SantoDomingo.agregarBibliotecario(bibliotecario1);
         SantoDomingo.agregarLibro(libro1);
         SantoDomingo.agregarLibro(libro2);
-        Libro nuevoLibro= new Libro("1478","14898","gabo","el pricipito-edicion especial","Norma", LocalDate.of(1998,4,7),7, Libro.Estado.regular);
+        Libro nuevoLibro= new Libro("1479","14898","gabo","el pricipito-edicion especial","Norma", LocalDate.of(1998,4,7),7, Libro.Estado.regular);
         SantoDomingo.reemplazarLibro("14898",nuevoLibro);
         SantoDomingo.CostoPrestamo("1787");
         SantoDomingo.añadirlibroprestamo(libro1, LocalDate.now());

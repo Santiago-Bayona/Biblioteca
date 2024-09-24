@@ -1,12 +1,15 @@
 package Biblioteca;
 import java.time.LocalDate;
+import java.util.Collection;
 import java.util.LinkedList;
+import java.util.List;
 
 public class Prestamo {
     private String codigo;
     public LocalDate fechaprestamo;
     public LocalDate fechaentrega;
     public double costoprestamo;
+    private Libro LibroPrestado;
     Collection<Libro>libros;
 
     public Prestamo(String codigo, LocalDate fechaprestamo, LocalDate fechaentrega, double costoprestamo) {
@@ -58,35 +61,14 @@ public class Prestamo {
         this.libros = libros;
     }
 
-    public void Cantidadprestar(int unidadesDisponibles) {
-        for (Libro libro : libros) {
-            if (libro.getUnidadesDisponibles() > 0) {
-                unidadesDisponibles--;
-            } else {
-                System.out.println("No hay unidades disponibles.");
-            }
-        }
+    public Libro getPrestado() {
+        return LibroPrestado;
     }
 
-    public void agregarLibroPrestamo(String codigo) {
-        LinkedList<Libro> prestar = new LinkedList<>();
-        int unidadesDisponibles = 0;
-
-        // Contar unidades disponibles
-        for (Libro libro : libros) {
-            unidadesDisponibles += libro.getUnidadesDisponibles();
-        }
-
-        if (unidadesDisponibles > 0) {
-            for (Libro libro : libros) {
-                if (libro.getCodigo().equals(codigo)) {
-                    prestar.add(libro);
-                }
-            }
-        } else {
-            System.out.println("No hay unidades disponibles para prestar.");
-        }
+    public void setPrestado(Libro prestado) {
+        this.LibroPrestado = prestado;
     }
+
 
     @Override
     public String toString() {
@@ -98,5 +80,4 @@ public class Prestamo {
                 '}';
     }
 }
-
 

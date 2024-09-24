@@ -14,6 +14,7 @@ public class Libro {
     public enum Estado{
         Muy_Bien, regular, Malo
     }
+    private int prestamosRealizados;
 
     public Libro(String codigo,String ISBN,String autor,String titulo,String editorial, LocalDate fecha,int unidadesDisponibles,Estado estado){
         this.Codigo=codigo;
@@ -24,8 +25,26 @@ public class Libro {
         this.fecha=fecha;
         this.UnidadesDisponibles=unidadesDisponibles;
         this.Estado=estado;
+        this.prestamosRealizados = 0;
     }
 
+    public void decrementarUnidades() {
+        if (UnidadesDisponibles > 0) {
+            UnidadesDisponibles--;
+        }
+    }
+
+    public void incrementarUnidades() {
+        UnidadesDisponibles++;
+    }
+
+    public void incrementarPrestamos() {
+        prestamosRealizados++;
+    }
+
+    public int getPrestamosRealizados() {
+        return prestamosRealizados;
+    }
     public String getCodigo() {
         return Codigo;
     }
@@ -89,6 +108,7 @@ public class Libro {
     public void setEstado(Libro.Estado estado) {
         this.Estado = estado;
     }
+
 
     @Override
     public String toString() {

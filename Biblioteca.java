@@ -2,22 +2,27 @@ package Biblioteca;
 
 
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
+import java.util.List;
 
 public class Biblioteca {
     public String Nombre;
     public String Direccion;
     Collection<Estudiente> estudientes;
     Collection<Bibliotecario> bibliotecarios;
-    Collection<Libro> libros;
+    List<Libro> libros;
+    Collection<Prestamo>prestamos;
 
     public Biblioteca(String nombre, String direccion) {
         this.Nombre = nombre;
         this.Direccion = direccion;
         this.estudientes = new LinkedList<>();
         this.bibliotecarios = new LinkedList<>();
-        this.libros = new LinkedList<>();
+        this.libros = new ArrayList<>();
+        this.prestamos=new LinkedList<>();
     }
 
     public String getNombre() {
@@ -56,8 +61,16 @@ public class Biblioteca {
         return libros;
     }
 
-    public void setLibros(Collection<Libro> libros) {
+    public void setLibros(List<Libro> libros) {
         this.libros = libros;
+    }
+
+    public Collection<Prestamo> getPrestamos() {
+        return prestamos;
+    }
+
+    public void setPrestamos(Collection<Prestamo> prestamos) {
+        this.prestamos = prestamos;
     }
 
     public boolean verificarEstudiante(String cedula) {
@@ -102,13 +115,43 @@ public class Biblioteca {
             libros.add(libro);
         }
     }
-    public void ConsultaLibro(String codigo) {
+    public Libro ConsultaLibro(String codigo) {
         for (Libro libro : libros) {
             if (libro.getCodigo().equals(codigo)) {
-                System.out.println(libro);
+                return libro;
             }
         }
+        return null;
     }
+
+    public void agregarPrestamo(Prestamo prestamo){
+        if(verificarPrestamo(prestamo.getCodigo())){
+            prestamos.add(prestamo);
+        }
+    }
+    public boolean verificarPrestamo(String codigo) {
+        for (Prestamo prestamo : prestamos) {
+            if (prestamo.equals(prestamo.getCodigo())) {
+                return false;
+            }
+        }
+        return true;
+    }
+    public void reemplazarLibro(String codigoViejo, Libro nuevoLibro) {
+        for (int i = 0; i < libros.size(); i++) {
+            if (libros.get(i).getCodigo().equals(codigoViejo)) {
+                libros.set(i, nuevoLibro);
+                System.out.println("Libro reemplazado con éxito.");
+                return;
+            }
+        }
+        System.out.println("Libro no encontrado.");
+    }
+
+
+
+
+
 
 
     @Override
@@ -119,6 +162,7 @@ public class Biblioteca {
                 ", estudientes=" + estudientes +
                 ", bibliotecarios=" + bibliotecarios +
                 ", libros=" + libros +
+                ", prestamos=" + prestamos +
                 '}';
     }
 }

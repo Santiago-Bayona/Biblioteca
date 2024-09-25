@@ -2,22 +2,24 @@ package Biblioteca;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.LinkedList;
-import java.util.List;
 
 public class Prestamo {
     private String codigo;
     public LocalDate fechaprestamo;
     public LocalDate fechaentrega;
-    public double costoprestamo;
-    private Libro LibroPrestado;
-    Collection<Libro>libros;
+    public int Costoprestamo;
+    private Estudiente estudiente;
+    private Bibliotecario bibliotecario;
+    Collection<DetallePrestamo>detallePrestamos;
 
-    public Prestamo(String codigo, LocalDate fechaprestamo, LocalDate fechaentrega, double costoprestamo) {
+    public Prestamo(String codigo, LocalDate fechaprestamo, LocalDate fechaentrega, int Costoprestamo, Estudiente estudiente, Bibliotecario bibliotecario) {
         this.codigo = codigo;
         this.fechaprestamo = fechaprestamo;
         this.fechaentrega = fechaentrega;
-        this.costoprestamo = costoprestamo;
-        this.libros=new LinkedList<>();
+        this.Costoprestamo = Costoprestamo;
+        this.estudiente=estudiente;
+        this.bibliotecario=bibliotecario;
+        this.detallePrestamos=new LinkedList<>();
     }
 
     public String getCodigo() {
@@ -46,29 +48,36 @@ public class Prestamo {
     }
 
     public double getCostoprestamo() {  
-        return costoprestamo;
+        return Costoprestamo;
     }
 
-    public void setCostoprestamo(double costoprestamo) {
-        this.costoprestamo = costoprestamo;
+    public void setCostoprestamo(int costoprestamo) {
+        this.Costoprestamo = costoprestamo;
     }
 
-    public Collection<Libro> getLibros() {
-        return libros;
+    public Estudiente getEstudiente() {
+        return estudiente;
     }
 
-    public void setLibros(Collection<Libro> libros) {
-        this.libros = libros;
+    public void setEstudiente(Estudiente estudiente) {
+        this.estudiente = estudiente;
     }
 
-    public Libro getPrestado() {
-        return LibroPrestado;
+    public Bibliotecario getBibliotecario() {
+        return bibliotecario;
     }
 
-    public void setPrestado(Libro prestado) {
-        this.LibroPrestado = prestado;
+    public void setBibliotecario(Bibliotecario bibliotecario) {
+        this.bibliotecario = bibliotecario;
     }
 
+    public Collection<DetallePrestamo> getDetallePrestamos() {
+        return detallePrestamos;
+    }
+
+    public void setLibros(Collection<DetallePrestamo> detallePrestamos) {
+        this.detallePrestamos = detallePrestamos;
+    }
 
     @Override
     public String toString() {
@@ -76,7 +85,10 @@ public class Prestamo {
                 "codigo='" + codigo + '\'' +
                 ", fechaprestamo=" + fechaprestamo +
                 ", fechaentrega=" + fechaentrega +
-                ", costoprestamo=" + costoprestamo +
+                ", Costoprestamo=" + Costoprestamo +
+                ", estudiente=" + estudiente +
+                ", bibliotecario=" + bibliotecario +
+                ", detallePrestamos=" + detallePrestamos +
                 '}';
     }
 }

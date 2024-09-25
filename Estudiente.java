@@ -1,28 +1,29 @@
 package Biblioteca;
 
 
+import java.util.Collection;
+import java.util.LinkedList;
+
 public class Estudiente extends Persona{
+    private int edad;
+    private Collection<Prestamo>prestamos;
 
-   public String correoinstitucional;
-    public Estudiante (String nombre,String cedula, String telefono,String correo,String correoinstitucional) {
+    public Estudiente (String nombre,String cedula, String telefono,String correo, int edad){
         super(nombre,cedula,telefono,correo);
-        this.correoinstitucional = correoinstitucional;
+        this.edad=edad;
+        this.prestamos=new LinkedList<>();
     }
 
-    public String getCorreoinstitucional() {
-        return correoinstitucional;
+    public int getEdad() {
+        return edad;
     }
 
-    public void setCorreoinstitucional(String correoinstitucional) {
-        this.correoinstitucional=correoinstitucional;
+    public void setEdad(int edad) {
+        this.edad = edad;
     }
-
-
 
     @Override
     public String toString() {
-        return "Estudiante= {" + super.toString() +"correoinstitucional= "+correoinstitucional+"}";
+        return "Estudiante= {" + super.toString() + " Edad: " + edad +" }";
     }
-
-
 }

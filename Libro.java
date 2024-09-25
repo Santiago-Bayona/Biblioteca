@@ -14,8 +14,6 @@ public class Libro {
     public enum Estado{
         Muy_Bien, regular, Malo
     }
-    private int prestamosRealizados;
-
     public Libro(String codigo,String ISBN,String autor,String titulo,String editorial, LocalDate fecha,int unidadesDisponibles,Estado estado){
         this.Codigo=codigo;
         this.ISBN=ISBN;
@@ -25,7 +23,6 @@ public class Libro {
         this.fecha=fecha;
         this.UnidadesDisponibles=unidadesDisponibles;
         this.Estado=estado;
-        this.prestamosRealizados = 0;
     }
 
     public void decrementarUnidades() {
@@ -38,13 +35,6 @@ public class Libro {
         UnidadesDisponibles++;
     }
 
-    public void incrementarPrestamos() {
-        prestamosRealizados++;
-    }
-
-    public int getPrestamosRealizados() {
-        return prestamosRealizados;
-    }
     public String getCodigo() {
         return Codigo;
     }
@@ -113,11 +103,11 @@ public class Libro {
             UnidadesDisponibles--;
         } else {
             System.out.println("No hay unidades disponibles");
-        }
-    }
+        }}
 
 
-    @Override
+
+        @Override
     public String toString() {
         return "Libro{" +
                 "Codigo='" + Codigo + '\'' +

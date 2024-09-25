@@ -9,17 +9,21 @@ import java.util.*;
 public class Biblioteca {
     public String Nombre;
     public String Direccion;
+    private double ganancia;
+    private int cantidadLibros;
     Collection<Estudiente> estudientes;
     Collection<Bibliotecario> bibliotecarios;
-    List<Libro> libros;
+    Collection<Libro> libros;
     Collection<Prestamo>prestamos;
 
-    public Biblioteca(String nombre, String direccion) {
+    public Biblioteca(String nombre, String direccion,double ganancia, int cantidadLibros) {
         this.Nombre = nombre;
         this.Direccion = direccion;
+        this.ganancia=ganancia;
+        this.cantidadLibros=cantidadLibros;
         this.estudientes = new LinkedList<>();
         this.bibliotecarios = new LinkedList<>();
-        this.libros = new ArrayList<>();
+        this.libros = new LinkedList<>();
         this.prestamos=new LinkedList<>();
     }
 
@@ -29,6 +33,22 @@ public class Biblioteca {
 
     public void setNombre(String nombre) {
         this.Nombre = nombre;
+    }
+
+    public double getGanancia() {
+        return ganancia;
+    }
+
+    public void setGanancia(double ganancia) {
+        this.ganancia = ganancia;
+    }
+
+    public int getCantidadLibros() {
+        return cantidadLibros;
+    }
+
+    public void setCantidadLibros(int cantidadLibros) {
+        this.cantidadLibros = cantidadLibros;
     }
 
     public String getDireccion() {
@@ -79,6 +99,7 @@ public class Biblioteca {
         }
         return true;
     }
+
     public boolean verificarBibliotecario(String cedula) {
         for (Bibliotecario bibliotecario : bibliotecarios) {
             if (cedula.equals(bibliotecario.getCedula())) {
@@ -87,6 +108,7 @@ public class Biblioteca {
         }
         return true;
     }
+
     public boolean verificarLibro(String ISBN) {
         for (Libro libro : libros) {
             if (libro.equals(libro.getISBN())) {
@@ -113,6 +135,7 @@ public class Biblioteca {
             libros.add(libro);
         }
     }
+
     public void Consultalibro(String codigo) {
         Boolean centinela =false;
         for (Libro libro : libros) {
@@ -125,6 +148,7 @@ public class Biblioteca {
             System.out.println("El libro con ese codigo no existe");
         }
     }
+
     public void ConsultaPrestamo(String codigo) {
         Boolean centinela =false;
         for (Prestamo prestamo : prestamos) {
@@ -143,6 +167,7 @@ public class Biblioteca {
             prestamos.add(prestamo);
         }
     }
+
     public boolean verificarPrestamo(String codigo) {
         for (Prestamo prestamo : prestamos) {
             if (prestamo.equals(prestamo.getCodigo())) {
@@ -151,6 +176,7 @@ public class Biblioteca {
         }
         return true;
     }
+
     public boolean reemplazarLibro(String ISBN, Libro nuevoLibro) {
         if (ISBN == null || nuevoLibro == null) {
             System.out.println("ISBN o libro nuevo no pueden ser nulos.");
@@ -162,8 +188,8 @@ public class Biblioteca {
         while (iterator.hasNext()) {
             Libro libroActual = iterator.next();
             if (libroActual.getISBN() != null && libroActual.getISBN().equals(ISBN)) {
-                iterator.remove(); // Eliminar el libro actual
-                libros.add(nuevoLibro); // Agregar el nuevo libro
+                iterator.remove();
+                libros.add(nuevoLibro);
                 System.out.println("Libro con ISBN " + ISBN + " reemplazado por " + nuevoLibro);
                 return true;
             }
@@ -171,6 +197,7 @@ public class Biblioteca {
         System.out.println("No se encontró el libro con ISBN " + ISBN);
         return false;
     }
+
     public void CostoPrestamo(String codigo) {
         Long diferencia = null;
         double costo = 0;
@@ -187,29 +214,22 @@ public class Biblioteca {
             System.out.println("No se encontró el préstamo con el código proporcionado.");
         }
     }
+
     public void añadirlibroprestamo(Libro libro, LocalDate fechaPrestamo) {
-         if (libro.getUnidadesDisponibles() > 0) {
+        if (libro.getUnidadesDisponibles() > 0) {
             libro.disminuirUnidades();
-            prestamos.add(new Prestamo(libro.getISBN(), fechaPrestamo, LocalDate.now(), 0.0));
-            System.out.println("El libro " + libro.getISBN() + " ha sido prestado con éxito.");
+            prestamos.add(new Prestamo(libro.getISBN(), fechaPrestamo, LocalDate.now(), 0));
+            System.out.println("El libro " + libro.getTitulo() + " ha sido prestado con éxito.");
+        }
     }
-    }
-
-
-
-
-
-
-
-
-
-
 
     @Override
     public String toString() {
         return "Biblioteca{" +
                 "Nombre='" + Nombre + '\'' +
                 ", Direccion='" + Direccion + '\'' +
+                ", ganancia=" + ganancia +
+                ", cantidadLibros=" + cantidadLibros +
                 ", estudientes=" + estudientes +
                 ", bibliotecarios=" + bibliotecarios +
                 ", libros=" + libros +

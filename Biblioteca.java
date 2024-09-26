@@ -1,7 +1,5 @@
 package Biblioteca;
 
-
-
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
@@ -215,12 +213,38 @@ public class Biblioteca {
         }
     }
 
-    public void añadirlibroprestamo(Libro libro, LocalDate fechaPrestamo) {
+    public void añadirlibroprestamo(Libro libro, LocalDate fechaPrestamo,Estudiente estudiente, Bibliotecario bibliotecario) {
         if (libro.getUnidadesDisponibles() > 0) {
             libro.disminuirUnidades();
-            prestamos.add(new Prestamo(libro.getISBN(), fechaPrestamo, LocalDate.now(), 0));
+            prestamos.add(new Prestamo(libro.getISBN(), fechaPrestamo, LocalDate.now(), 0,estudiente,bibliotecario));
             System.out.println("El libro " + libro.getTitulo() + " ha sido prestado con éxito.");
         }
+    }
+
+    public Estudiente estudianteConMasPrestamos() {
+        Estudiente estudianteConMas = null;
+        int maxPrestamos = 0;
+        LinkedList<Estudiente> estudiantes = new LinkedList<>();
+        for (Prestamo prestamo : prestamos) {
+            Estudiente estudiante = prestamo.getEstudiente();
+            if (!estudiantes.contains(estudiante)) {
+                estudiantes.add(estudiante);
+            }
+        }
+        for (Estudiente estudiante : estudiantes) {
+            int contador = 0;
+            for (Prestamo prestamo : prestamos) {
+                if (prestamo.getEstudiente().equals(estudiante)) {
+                    contador++;
+                }
+            }
+            if (contador > maxPrestamos) {
+                maxPrestamos = contador;
+                estudianteConMas = estudiante;
+            }
+        }
+
+        return estudianteConMas;
     }
 
     @Override

@@ -11,14 +11,17 @@ public class Prestamo {
     private Estudiente estudiente;
     private Bibliotecario bibliotecario;
     Collection<DetallePrestamo>detallePrestamos;
+     private Libro libro;
 
-    public Prestamo(String codigo, LocalDate fechaprestamo, LocalDate fechaentrega, int Costoprestamo, Estudiente estudiente, Bibliotecario bibliotecario) {
+
+    public Prestamo(Libro libro,String codigo, LocalDate fechaprestamo, LocalDate fechaentrega, int Costoprestamo, Estudiente estudiente, Bibliotecario bibliotecario) {
         this.codigo = codigo;
         this.fechaprestamo = fechaprestamo;
         this.fechaentrega = fechaentrega;
         this.Costoprestamo = Costoprestamo;
         this.estudiente=estudiente;
         this.bibliotecario=bibliotecario;
+        this.libro=libro
         this.detallePrestamos=new LinkedList<>();
     }
 
@@ -69,6 +72,13 @@ public class Prestamo {
 
     public void setBibliotecario(Bibliotecario bibliotecario) {
         this.bibliotecario = bibliotecario;
+    }
+     public Libro getLibro() {
+        return libro;
+    }
+
+    public void setLibro(Libro libro) {
+        this.libro = libro;
     }
 
     public Collection<DetallePrestamo> getDetallePrestamos() {

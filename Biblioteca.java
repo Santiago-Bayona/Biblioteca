@@ -311,6 +311,21 @@ public class Biblioteca {
 
         return estudianteConMas;
     }
+    public void consultarPrestamosPorNombreLibro(String nombreLibro) {
+        int contadorPrestamos = 0; 
+
+        for (Prestamo prestamo : prestamos) {
+            if (prestamo.getLibro().getTitulo().equalsIgnoreCase(nombreLibro)) {
+                contadorPrestamos++;  
+                System.out.println("Préstamo encontrado: " + prestamo.getCodigo() 
+                                   + ", Fecha: " + prestamo.getFechaprestamo() 
+                                   + ", Libro: " + prestamo.getLibro().getTitulo());
+            }
+        }
+        
+        
+        System.out.println("El libro \"" + nombreLibro + "\" está incluido en " + contadorPrestamos + " préstamos.");
+    }
 
     /**
      * Metodo que permite ver toda la información de la biblioteca

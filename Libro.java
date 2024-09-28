@@ -98,6 +98,10 @@ public class Libro {
     public void setEstado(Libro.Estado estado) {
         this.Estado = estado;
     }
+
+    /**
+     * Metodo que permite disminuir las unidades de un libro cada vez que sea prestado
+     */
     public void disminuirUnidades() {
         if (UnidadesDisponibles > 0) {
             UnidadesDisponibles--;

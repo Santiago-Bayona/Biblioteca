@@ -89,6 +89,11 @@ public class Biblioteca {
         this.prestamos = prestamos;
     }
 
+    /**
+     * metodo para verificar que no hayan 2 estudiantes repetidos
+     * @param cedula
+     * @return un booleano
+     */
     public boolean verificarEstudiante(String cedula) {
         for (Estudiente estudiente : estudientes) {
             if (cedula.equals(estudiente.getCedula())) {
@@ -98,6 +103,11 @@ public class Biblioteca {
         return true;
     }
 
+    /**
+     * Metodo para verificar que no hayan 2 bibliotecarios repetidos
+     * @param cedula
+     * @return un booleano
+     */
     public boolean verificarBibliotecario(String cedula) {
         for (Bibliotecario bibliotecario : bibliotecarios) {
             if (cedula.equals(bibliotecario.getCedula())) {
@@ -107,6 +117,11 @@ public class Biblioteca {
         return true;
     }
 
+    /**
+     * metodo para verificar que no hayan 2 libros repetidos
+     * @param ISBN
+     * @return un booleano
+     */
     public boolean verificarLibro(String ISBN) {
         for (Libro libro : libros) {
             if (libro.equals(libro.getISBN())) {
@@ -116,24 +131,40 @@ public class Biblioteca {
         return true;
     }
 
+    /**
+     * Metodo que vincula a los estudiantes con la biblioteca
+     * @param estudiente
+     */
     public void agregarEstudiante(Estudiente estudiente){
         if(verificarEstudiante(estudiente.getCedula())){
             estudientes.add(estudiente);
         }
     }
 
+    /**
+     * Metodo que vincula a los bibliotecarios con la biblioteca
+     * @param bibliotecario
+     */
     public void agregarBibliotecario(Bibliotecario bibliotecario){
         if(verificarBibliotecario(bibliotecario.getCedula())){
             bibliotecarios.add(bibliotecario);
         }
     }
 
+    /**
+     * Metodo que vincula a los libros con la biblioteca
+     * @param libro
+     */
     public void agregarLibro(Libro libro){
         if(verificarLibro(libro.getISBN())){
             libros.add(libro);
         }
     }
 
+    /**
+     * Metodo que permite consultar la información de un libro
+     * @param codigo
+     */
     public void Consultalibro(String codigo) {
         Boolean centinela =false;
         for (Libro libro : libros) {
@@ -147,6 +178,10 @@ public class Biblioteca {
         }
     }
 
+    /**
+     * Metodo que permite consultar la información de un prestamo
+     * @param codigo
+     */
     public void ConsultaPrestamo(String codigo) {
         Boolean centinela =false;
         for (Prestamo prestamo : prestamos) {
@@ -160,12 +195,21 @@ public class Biblioteca {
         }
     }
 
+    /**
+     * Metodo que vincula a los prestamos con la biblioteca
+     * @param prestamo
+     */
     public void agregarPrestamo(Prestamo prestamo){
         if(verificarPrestamo(prestamo.getCodigo())){
             prestamos.add(prestamo);
         }
     }
 
+    /**
+     * Metodo para verificar que no haya 2 prestamos iguales
+     * @param codigo
+     * @return boolean
+     */
     public boolean verificarPrestamo(String codigo) {
         for (Prestamo prestamo : prestamos) {
             if (prestamo.equals(prestamo.getCodigo())) {
@@ -175,6 +219,12 @@ public class Biblioteca {
         return true;
     }
 
+    /**
+     * Metodo que permite reemplazar la información un libro por otro nuevo
+     * @param ISBN
+     * @param nuevoLibro
+     * @return
+     */
     public boolean reemplazarLibro(String ISBN, Libro nuevoLibro) {
         if (ISBN == null || nuevoLibro == null) {
             System.out.println("ISBN o libro nuevo no pueden ser nulos.");
@@ -196,6 +246,10 @@ public class Biblioteca {
         return false;
     }
 
+    /**
+     * Metodo que permite calcular el costo de un prestamo, multiplicando el CostoPorDia por la cantiadad de días prestaodo
+     * @param codigo
+     */
     public void CostoPrestamo(String codigo) {
         Long diferencia = null;
         double costo = 0;
@@ -213,6 +267,13 @@ public class Biblioteca {
         }
     }
 
+    /**
+     * Metodo que permiyte añadir un libro a un prestamo
+     * @param libro
+     * @param fechaPrestamo
+     * @param estudiente
+     * @param bibliotecario
+     */
     public void añadirlibroprestamo(Libro libro, LocalDate fechaPrestamo,Estudiente estudiente, Bibliotecario bibliotecario) {
         if (libro.getUnidadesDisponibles() > 0) {
             libro.disminuirUnidades();
@@ -221,6 +282,10 @@ public class Biblioteca {
         }
     }
 
+    /**
+     * Metodo que permite encontrar la información del estudiante con más préstamos
+     * @return
+     */
     public Estudiente estudianteConMasPrestamos() {
         Estudiente estudianteConMas = null;
         int maxPrestamos = 0;
@@ -247,6 +312,10 @@ public class Biblioteca {
         return estudianteConMas;
     }
 
+    /**
+     * Metodo que permite ver toda la información de la biblioteca
+     * @return
+     */
     @Override
     public String toString() {
         return "Biblioteca{" +

@@ -22,6 +22,7 @@ public class app {
         SantoDomingo.CostoPrestamo("1787");
         SantoDomingo.añadirlibroprestamo(libro1, LocalDate.now(),estudiente1,bibliotecario1);
         SantoDomingo.Consultalibro("1478");
+        SantoDomingo.consultarPrestamosPorNombreLibro("cien años de soledad");
         System.out.println("el estudiante con mas prestamos es : " + SantoDomingo.estudianteConMasPrestamos());
         System.out.println(SantoDomingo);
 

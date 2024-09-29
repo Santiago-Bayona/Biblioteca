@@ -45,8 +45,9 @@ public class app {
 
         SantoDomingo.entregarPrestamo("1787");
 
-        prestamo1.añadirlibroprestamo(libro1);
-        prestamo2.añadirlibroprestamo(libro2);
+        prestamo1.añadirlibroprestamo(libro1,2,10);
+        prestamo2.añadirlibroprestamo(libro2,1,45);
+        prestamo3.añadirlibroprestamo(libro1,1,32);
 
         SantoDomingo.Consultalibro("1478");
 

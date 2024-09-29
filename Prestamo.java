@@ -1,5 +1,6 @@
 package Biblioteca;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -79,13 +80,15 @@ public class Prestamo {
     public void setLibros(Collection<DetallePrestamo> detallePrestamos) {
         this.detallePrestamos = detallePrestamos;
     }
-    public void añadirlibroprestamo(Libro libro) {
+
+    public void añadirlibroprestamo(Libro libro, int cantidad, double costoPorDia) {
         if (libro.getUnidadesDisponibles() > 0) {
             libro.disminuirUnidades();
 
-            // Crear un nuevo detalle de préstamo y asociar el libro
-            DetallePrestamo detalle = new DetallePrestamo(1, libro);
-            detalle.setLibro(libro);
+            // Crear un nuevo detalle de préstamo con los argumentos necesarios
+            DetallePrestamo detalle = new DetallePrestamo(cantidad, libro);
+            int diasPrestamo = (int) ChronoUnit.DAYS.between(fechaprestamo, fechaentrega);
+            detalle.calcularSubTotal(costoPorDia, diasPrestamo);
 
             // Agregar el detalle a la colección de detalles de préstamo
             this.detallePrestamos.add(detalle);
@@ -96,6 +99,13 @@ public class Prestamo {
         }
     }
 
+    public double calcularCostoTotal() {
+        double total = 0;
+        for (DetallePrestamo detalle : detallePrestamos) {
+            total += detalle.getSubTotal();
+        }
+        return total;
+    }
 
     @Override
     public String toString() {

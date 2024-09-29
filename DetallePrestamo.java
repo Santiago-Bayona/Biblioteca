@@ -27,6 +27,14 @@ public class DetallePrestamo {
         this.libro = libro;
     }
 
+    public double getSubTotal() {
+        return subTotal;
+    }
+
+    public void calcularSubTotal(double costoPorDia, int diasPrestamo) {
+        this.subTotal = costoPorDia * diasPrestamo * cantidad;
+    }
+
     @Override
     public String toString() {
         return "DetallePrestamo{" +

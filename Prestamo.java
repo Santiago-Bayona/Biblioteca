@@ -22,6 +22,7 @@ public class Prestamo {
         this.bibliotecario=bibliotecario;
         this.detallePrestamos=new LinkedList<>();
         this.bibliotecario.incrementarPrestamos();
+        this.bibliotecario.getPrestamos().add(this);
     }
 
     public String getCodigo() {
@@ -81,16 +82,20 @@ public class Prestamo {
         this.detallePrestamos = detallePrestamos;
     }
 
+    /**
+     * Metodo que permite añadir un libro a un prestamo
+     * @param libro
+     * @param cantidad
+     * @param costoPorDia
+     */
     public void añadirlibroprestamo(Libro libro, int cantidad, double costoPorDia) {
         if (libro.getUnidadesDisponibles() > 0) {
             libro.disminuirUnidades();
 
-            // Crear un nuevo detalle de préstamo con los argumentos necesarios
             DetallePrestamo detalle = new DetallePrestamo(cantidad, libro);
             int diasPrestamo = (int) ChronoUnit.DAYS.between(fechaprestamo, fechaentrega);
             detalle.calcularSubTotal(costoPorDia, diasPrestamo);
 
-            // Agregar el detalle a la colección de detalles de préstamo
             this.detallePrestamos.add(detalle);
 
             System.out.println("El libro " + libro.getTitulo() + " ha sido prestado con éxito.");
@@ -99,6 +104,10 @@ public class Prestamo {
         }
     }
 
+    /**
+     * Metodo que permite calcular el costo total de un prestamo
+     * @return
+     */
     public double calcularCostoTotal() {
         double total = 0;
         for (DetallePrestamo detalle : detallePrestamos) {

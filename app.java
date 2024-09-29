@@ -12,18 +12,18 @@ public class app {
 
 
         Estudiente estudiente1= new Estudiente("luis","147","22121212","Luis@gmail.com",21);
-        Estudiente estudiente2 = new Estudiente("Luna","10245","3115545644", "khskshsjk@gmail.com",17);
+        Estudiente estudiente2 = new Estudiente("Luna","10245","3115545644", "Luna@gmail.com",17);
         Estudiente estudiente3 = new Estudiente("Javier","14545245","3124573558", "Javier@gmail.com",19);
 
 
         Libro libro1= new Libro("1478","14897","gabo","Cien años de Soledad","Norma", LocalDate.of(1998,4,7),7, Libro.Estado.regular);
         Libro libro2= new Libro("1479","14898","aritoteles","el principito","Norma", LocalDate.of(1954,8,17),4, Libro.Estado.regular);
         Libro libro3= new Libro("5745","24555","Fran kafka","La metamorfosis","Norma", LocalDate.of(1915,2,24),9, Libro.Estado.Malo);
-        Libro nuevoLibro= new Libro("1474","14891","gabo","el pricipito-edicion especial","Norma", LocalDate.of(1998,4,7),7, Libro.Estado.regular);
+        Libro nuevoLibro= new Libro("1474","14891","Gemma Pasqual","La mosca","Norma", LocalDate.of(2005,10,1),7, Libro.Estado.regular);
 
         Prestamo prestamo1= new Prestamo("1787",LocalDate.now(),LocalDate.now().plusDays(7),10,estudiente1,bibliotecario1);
         Prestamo prestamo2= new Prestamo("1789",LocalDate.now(),LocalDate.now().plusDays(9),45,estudiente2,bibliotecario2);
-        Prestamo prestamo3= new Prestamo("1787",LocalDate.now(),LocalDate.now().plusDays(8),32,estudiente2,bibliotecario3);
+        Prestamo prestamo3= new Prestamo("1496",LocalDate.now(),LocalDate.now().plusDays(8),32,estudiente2,bibliotecario3);
 
         SantoDomingo.agregarEstudiante(estudiente1);
         SantoDomingo.agregarEstudiante(estudiente2);
@@ -41,23 +41,30 @@ public class app {
         SantoDomingo.agregarPrestamo(prestamo2);
         SantoDomingo.agregarPrestamo(prestamo3);
 
-        SantoDomingo.reemplazarLibro("14898",nuevoLibro);
-
-        SantoDomingo.entregarPrestamo("1787");
+        SantoDomingo.reemplazarLibro("24555",nuevoLibro);
 
         prestamo1.añadirlibroprestamo(libro1,2,10);
         prestamo2.añadirlibroprestamo(libro2,1,45);
         prestamo3.añadirlibroprestamo(libro1,1,32);
 
-        SantoDomingo.Consultalibro("1478");
+        SantoDomingo.entregarPrestamo("1787");
+
+        SantoDomingo.Consultalibro("1474");
 
         SantoDomingo.consultarPrestamosPorNombreLibro("Cien años de Soledad");
 
         SantoDomingo.mostrarPrestamosPorBibliotecario();
 
-        SantoDomingo.ConsultaPrestamo("1789");
+        SantoDomingo.ConsultaPrestamo("1787");
 
         System.out.println("el estudiante con mas prestamos es : " + SantoDomingo.estudianteConMasPrestamos());
+
+        bibliotecario1.calcularSalario();
+        System.out.println("Salario del bibliotecario 1: " + bibliotecario1.getSalario());
+        bibliotecario2.calcularSalario();
+        System.out.println("Salario del bibliotecario 2: " + bibliotecario2.getSalario());
+        bibliotecario3.calcularSalario();
+        System.out.println("Salario del bibliotecario 3: " + bibliotecario3.getSalario());
 
         System.out.println(SantoDomingo);
 

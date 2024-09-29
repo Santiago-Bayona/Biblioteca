@@ -31,6 +31,11 @@ public class DetallePrestamo {
         return subTotal;
     }
 
+    /**
+     * Metodo que permite calcular el subtotal de un prestamo
+     * @param costoPorDia
+     * @param diasPrestamo
+     */
     public void calcularSubTotal(double costoPorDia, int diasPrestamo) {
         this.subTotal = costoPorDia * diasPrestamo * cantidad;
     }

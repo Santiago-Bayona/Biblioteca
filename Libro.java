@@ -109,6 +109,16 @@ public class Libro {
             System.out.println("No hay unidades disponibles");
         }}
 
+    /**
+     * Metodo que permite sumar las unidaes de un libro cada vez que sea entregado
+     */
+    public void sumarUnidades() {
+        if (UnidadesDisponibles > 0) {
+            UnidadesDisponibles++;
+        } else {
+            System.out.println("No hay unidades disponibles");
+        }}
+
 
 
         @Override

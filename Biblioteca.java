@@ -13,6 +13,7 @@ public class Biblioteca {
     Collection<Bibliotecario> bibliotecarios;
     Collection<Libro> libros;
     Collection<Prestamo>prestamos;
+    Collection<DetallePrestamo>detallePrestamos;
 
     public Biblioteca(String nombre, String direccion,double ganancia, int cantidadLibros) {
         this.Nombre = nombre;
@@ -23,6 +24,7 @@ public class Biblioteca {
         this.bibliotecarios = new LinkedList<>();
         this.libros = new LinkedList<>();
         this.prestamos=new LinkedList<>();
+        this.detallePrestamos=new LinkedList<>();
     }
 
     public String getNombre() {
@@ -87,6 +89,14 @@ public class Biblioteca {
 
     public void setPrestamos(Collection<Prestamo> prestamos) {
         this.prestamos = prestamos;
+    }
+
+    public Collection<DetallePrestamo> getDetallePrestamos() {
+        return detallePrestamos;
+    }
+
+    public void setDetallePrestamos(Collection<DetallePrestamo> detallePrestamos) {
+        this.detallePrestamos = detallePrestamos;
     }
 
     /**
@@ -247,42 +257,57 @@ public class Biblioteca {
     }
 
     /**
-     * Metodo que permite calcular el costo de un prestamo, multiplicando el CostoPorDia por la cantiadad de días prestaodo
+     * Metodo que permite entregar un prestamo, calculando el costo
      * @param codigo
      */
-    public void CostoPrestamo(String codigo) {
+    public void entregarPrestamo(String codigo) {
         Long diferencia = null;
         double costo = 0;
+        Prestamo prestamoEntregado = null;
+
         for (Prestamo prestamo : prestamos) {
             if (prestamo.getCodigo().equals(codigo)) {
                 diferencia = ChronoUnit.DAYS.between(prestamo.getFechaprestamo(), prestamo.getFechaentrega());
                 costo = prestamo.getCostoprestamo();
+                prestamoEntregado = prestamo;
                 break;
             }
         }
-        if (diferencia != null) {
-            System.out.println("Costo del préstamo = " + (diferencia * costo) + " pesos");
+        if (prestamoEntregado != null) {
+            double costoTotal = diferencia * costo;
+            System.out.println("Costo del préstamo = " + costoTotal + " pesos.");
+            for (DetallePrestamo detallePrestamo:detallePrestamos) {
+                Libro libro = detallePrestamo.getLibro();
+                libro.sumarUnidades();
+            }
+            System.out.println("El préstamo ha sido entregado y se ha actualizado el stock del libro.");
         } else {
             System.out.println("No se encontró el préstamo con el código proporcionado.");
         }
     }
 
     /**
-     * Metodo que permiyte añadir un libro a un prestamo
-     * @param libro
-     * @param fechaPrestamo
-     * @param estudiente
-     * @param bibliotecario
+     * Metod que permite ver en cuantos préstamos está un libro
+     * @param nombreLibro
      */
-    public void añadirlibroprestamo(Libro libro, Prestamo prestamo) {
-        if (libro.getUnidadesDisponibles() > 0) {
-            libro.disminuirUnidades();
-            prestamos.add(prestamo);
-            System.out.println("El libro " + libro.getTitulo() + " ha sido prestado con éxito.");
-        } else {
-            System.out.println("No hay unidades disponibles del libro " + libro.getTitulo() + ".");
+    public void consultarPrestamosPorNombreLibro(String nombreLibro) {
+        int contadorPrestamos = 0;
+        for (Prestamo prestamo : prestamos) {
+            for (DetallePrestamo detallePrestamo : prestamo.getDetallePrestamos()) {
+                if (detallePrestamo.getLibro().getTitulo().equals(nombreLibro)) {
+                    contadorPrestamos++;
+                    System.out.println("Préstamo encontrado: " + prestamo.getCodigo()
+                            + ", Fecha del préstamo: " + prestamo.getFechaprestamo()
+                            + ", Fecha de entrega: " + prestamo.getFechaentrega()
+                            + ", Libro: " + detallePrestamo.getLibro().getTitulo());
+                    break;
+                }
+            }
         }
+
+        System.out.println("El libro \"" + nombreLibro + "\" está incluido en " + contadorPrestamos + " préstamos.");
     }
+
 
     /**
      * Metodo que permite encontrar la información del estudiante con más préstamos
@@ -313,33 +338,18 @@ public class Biblioteca {
 
         return estudianteConMas;
     }
-    public void consultarPrestamosPorNombreLibro(String nombreLibro) {
-        int contadorPrestamos = 0; 
-
-        for (Prestamo prestamo : prestamos) {
-            if (prestamo.getLibro().getTitulo().equalsIgnoreCase(nombreLibro)) {
-                contadorPrestamos++;  
-                System.out.println("Préstamo encontrado: " + prestamo.getCodigo() 
-                                   + ", Fecha: " + prestamo.getFechaprestamo() 
-                                   + ", Libro: " + prestamo.getLibro().getTitulo());
-            }
-        }
-        
-        
-        System.out.println("El libro \"" + nombreLibro + "\" está incluido en " + contadorPrestamos + " préstamos.");
-    }
-
-    public void  mostrarPrestamosPorBibliotecario() {
-    for (Bibliotecario bibliotecario : bibliotecarios) {
-        System.out.println("Bibliotecario: " + bibliotecario.getNombre() + 
-                           " - Préstamos realizados: " + bibliotecario.getPrestamosRealizados());
-    }
-}
 
     /**
-     * Metodo que permite ver toda la información de la biblioteca
-     * @return
+     * Metodo que permite la cantidad préstamos realizada por cada bibliotecario
      */
+    public void  mostrarPrestamosPorBibliotecario() {
+        for (Bibliotecario bibliotecario : bibliotecarios) {
+            System.out.println("Bibliotecario: " + bibliotecario.getNombre() +
+                    " - Préstamos realizados: " + bibliotecario.getPrestamosRealizados());
+        }
+    }
+
+
     @Override
     public String toString() {
         return "Biblioteca{" +

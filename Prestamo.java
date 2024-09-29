@@ -11,17 +11,14 @@ public class Prestamo {
     private Estudiente estudiente;
     private Bibliotecario bibliotecario;
     Collection<DetallePrestamo>detallePrestamos;
-     private Libro libro;
 
-
-    public Prestamo(Libro libro,String codigo, LocalDate fechaprestamo, LocalDate fechaentrega, int Costoprestamo, Estudiente estudiente, Bibliotecario bibliotecario) {
+    public Prestamo(String codigo, LocalDate fechaprestamo, LocalDate fechaentrega, int Costoprestamo, Estudiente estudiente, Bibliotecario bibliotecario) {
         this.codigo = codigo;
         this.fechaprestamo = fechaprestamo;
         this.fechaentrega = fechaentrega;
         this.Costoprestamo = Costoprestamo;
         this.estudiente=estudiente;
         this.bibliotecario=bibliotecario;
-        this.libro=libro
         this.detallePrestamos=new LinkedList<>();
         this.bibliotecario.incrementarPrestamos();
     }
@@ -74,13 +71,6 @@ public class Prestamo {
     public void setBibliotecario(Bibliotecario bibliotecario) {
         this.bibliotecario = bibliotecario;
     }
-     public Libro getLibro() {
-        return libro;
-    }
-
-    public void setLibro(Libro libro) {
-        this.libro = libro;
-    }
 
     public Collection<DetallePrestamo> getDetallePrestamos() {
         return detallePrestamos;
@@ -89,6 +79,23 @@ public class Prestamo {
     public void setLibros(Collection<DetallePrestamo> detallePrestamos) {
         this.detallePrestamos = detallePrestamos;
     }
+    public void añadirlibroprestamo(Libro libro) {
+        if (libro.getUnidadesDisponibles() > 0) {
+            libro.disminuirUnidades();
+
+            // Crear un nuevo detalle de préstamo y asociar el libro
+            DetallePrestamo detalle = new DetallePrestamo(1, libro);
+            detalle.setLibro(libro);
+
+            // Agregar el detalle a la colección de detalles de préstamo
+            this.detallePrestamos.add(detalle);
+
+            System.out.println("El libro " + libro.getTitulo() + " ha sido prestado con éxito.");
+        } else {
+            System.out.println("No hay unidades disponibles del libro " + libro.getTitulo() + ".");
+        }
+    }
+
 
     @Override
     public String toString() {

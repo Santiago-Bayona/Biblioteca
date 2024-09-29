@@ -45,14 +45,16 @@ public class app {
 
         SantoDomingo.entregarPrestamo("1787");
 
-        SantoDomingo.añadirlibroprestamo(libro1, LocalDate.now(),estudiente1,bibliotecario1);
-        SantoDomingo.añadirlibroprestamo(libro2,LocalDate.now(),estudiente2,bibliotecario2);
+        prestamo1.añadirlibroprestamo(libro1);
+        prestamo2.añadirlibroprestamo(libro2);
 
         SantoDomingo.Consultalibro("1478");
 
         SantoDomingo.consultarPrestamosPorNombreLibro("Cien años de Soledad");
 
         SantoDomingo.mostrarPrestamosPorBibliotecario();
+
+        SantoDomingo.ConsultaPrestamo("1789");
 
         System.out.println("el estudiante con mas prestamos es : " + SantoDomingo.estudianteConMasPrestamos());
 

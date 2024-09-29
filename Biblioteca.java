@@ -327,6 +327,13 @@ public class Biblioteca {
         System.out.println("El libro \"" + nombreLibro + "\" está incluido en " + contadorPrestamos + " préstamos.");
     }
 
+    public void  mostrarPrestamosPorBibliotecario() {
+    for (Bibliotecario bibliotecario : bibliotecarios) {
+        System.out.println("Bibliotecario: " + bibliotecario.getNombre() + 
+                           " - Préstamos realizados: " + bibliotecario.getPrestamosRealizados());
+    }
+}
+
     /**
      * Metodo que permite ver toda la información de la biblioteca
      * @return

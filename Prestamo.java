@@ -23,6 +23,7 @@ public class Prestamo {
         this.bibliotecario=bibliotecario;
         this.libro=libro
         this.detallePrestamos=new LinkedList<>();
+        this.bibliotecario.incrementarPrestamos();
     }
 
     public String getCodigo() {

@@ -274,11 +274,13 @@ public class Biblioteca {
      * @param estudiente
      * @param bibliotecario
      */
-    public void añadirlibroprestamo(Libro libro, LocalDate fechaPrestamo,Estudiente estudiente, Bibliotecario bibliotecario) {
+    public void añadirlibroprestamo(Libro libro, Prestamo prestamo) {
         if (libro.getUnidadesDisponibles() > 0) {
             libro.disminuirUnidades();
-            prestamos.add(new Prestamo(libro.getISBN(), fechaPrestamo, LocalDate.now(), 0,estudiente,bibliotecario));
-            System.out.println("El libro " + libro.getTitulo() + " ha sido prestado con éxito.");
+            prestamos.add(prestamo);
+            System.out.println("El libro " + libro.getTitulo() + " ha sido prestado con éxito.");
+        } else {
+            System.out.println("No hay unidades disponibles del libro " + libro.getTitulo() + ".");
         }
     }
 

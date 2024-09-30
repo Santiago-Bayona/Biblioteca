@@ -348,13 +348,22 @@ public class Biblioteca {
                     " - Préstamos realizados: " + bibliotecario.getPrestamosRealizados());
         }
     }
-    public void calculartotalrecaudado(List<Prestamo> prestamos) {
+
+    /**
+     * Metodo que permite calcular la ganacia de la biblioteca
+     */
+    public double calcularTotalrecaudado() {
         double total = 0;
-        for (Prestamo prestamo : prestamos) {
-            total += prestamo.getCostoprestamo();
+        for (Prestamo prestamo : this.prestamos) {
+            for (DetallePrestamo detalle : prestamo.getDetallePrestamos()) {
+                total += detalle.getSubTotal();
+            }
         }
-        System.out.println("Total recaudado: " + total);
+        this.ganancia = total; // Actualiza la ganancia con el total recaudado
+        return total;
     }
+
+
 
 
     @Override

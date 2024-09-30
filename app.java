@@ -4,7 +4,6 @@ import java.time.LocalDate;
 
 public class app {
     public static void main (String[]args){
-        List<Prestamo> listaPrestamos = new ArrayList<>();
         Biblioteca SantoDomingo= new Biblioteca("Santo Domingo","carrera 19",0.0,58);
 
         Bibliotecario bibliotecario1= new Bibliotecario("Jose","1478444","31245457","Jose@gamil.com", 5);
@@ -66,11 +65,9 @@ public class app {
         System.out.println("Salario del bibliotecario 2: " + bibliotecario2.getSalario());
         bibliotecario3.calcularSalario();
         System.out.println("Salario del bibliotecario 3: " + bibliotecario3.getSalario());
-       
-        listaPrestamos.add(prestamo1);
-        listaPrestamos.add(prestamo2);
-        
-        SantoDomingo.calculartotalrecaudado(listaPrestamos);
+
+        SantoDomingo.calcularTotalrecaudado();
+        System.out.println("El total de la ganancia de la Biblioteca: " + SantoDomingo.calcularTotalrecaudado());
 
         System.out.println(SantoDomingo);
 

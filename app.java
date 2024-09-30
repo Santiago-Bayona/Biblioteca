@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class app {
     public static void main (String[]args){
-        Biblioteca SantoDomingo= new Biblioteca("Santo Domingo","carrera 19",0.0,58);
+        Biblioteca SantoDomingo= new Biblioteca("Santo Domingo","carrera 19",0.0,27);
 
         Bibliotecario bibliotecario1= new Bibliotecario("Jose","1478444","31245457","Jose@gamil.com", 5);
         Bibliotecario bibliotecario2= new Bibliotecario("Victor","1084512","34758622345","Victor@gamil.com", 8);

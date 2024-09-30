@@ -348,6 +348,13 @@ public class Biblioteca {
                     " - Préstamos realizados: " + bibliotecario.getPrestamosRealizados());
         }
     }
+    public void calculartotalrecaudado(List<Prestamo> prestamos) {
+        double total = 0;
+        for (Prestamo prestamo : prestamos) {
+            total += prestamo.getCostoprestamo();
+        }
+        System.out.println("Total recaudado: " + total);
+    }
 
 
     @Override

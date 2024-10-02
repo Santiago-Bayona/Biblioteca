@@ -1,4 +1,4 @@
-package Biblioteca;
+dapackage Biblioteca;
 
 
 import java.util.Collection;
@@ -22,7 +22,7 @@ public class Estudiente extends Persona{
     }
 /**
  * Metodo que obtiene la edad
- * @return
+ * @return edad del estudiente
  */
     public int getEdad() {
         return edad;

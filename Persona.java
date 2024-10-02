@@ -22,7 +22,7 @@ public class Persona {
 
     /**
      * Metodo que permite obtener el nombre de una persona
-     * @return
+     * @return el nombre de la persona
      */
     public String getNombre() {
         return nombre;
@@ -38,7 +38,7 @@ public class Persona {
 
     /**
      * Metodo que permite obtener la cedula de una persona
-     * @return
+     * @return la cedula de la persona
      */
     public String getCedula() {
         return cedula;
@@ -54,7 +54,7 @@ public class Persona {
 
     /**
      * Metodo que permite obtener el telefono de una persona
-     * @return
+     * @return el telefono de una persona
      */
     public String getTelefono() {
         return telefono;
@@ -70,7 +70,7 @@ public class Persona {
 
     /**
      * Metodo que obtener el correo de una persona
-     * @return
+     * @return el correo de la persona
      */
     public String getCorreo() {
         return Correo;

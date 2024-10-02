@@ -15,6 +15,13 @@ public class Biblioteca {
     Collection<Prestamo>prestamos;
     Collection<DetallePrestamo>detallePrestamos;
 
+    /**
+     * Metodo constructor de la clase Biblioteca
+     * @param nombre
+     * @param direccion
+     * @param ganancia
+     * @param cantidadLibros
+     */
     public Biblioteca(String nombre, String direccion,double ganancia, int cantidadLibros) {
         this.Nombre = nombre;
         this.Direccion = direccion;
@@ -27,77 +34,134 @@ public class Biblioteca {
         this.detallePrestamos=new LinkedList<>();
     }
 
+    /**
+     * Metodo que permite obtener el nombre de la biblioteca
+     * @return el nombre de la biblioteca
+     */
     public String getNombre() {
         return Nombre;
     }
 
+    /**
+     * Metodo que permite moficar el nombre de la biblioteca
+     * @param nombre
+     */
     public void setNombre(String nombre) {
         this.Nombre = nombre;
     }
 
+    /**
+     * Metodo que permite obtener la ganancia de la Biblioteca
+     * @return la ganacia de la biblioteca
+     */
     public double getGanancia() {
         return ganancia;
     }
 
+    /**
+     * Metodo que permite modificar la ganancia de la biblioteca
+     * @param ganancia
+     */
     public void setGanancia(double ganancia) {
         this.ganancia = ganancia;
     }
 
+    /**
+     * Metodo que permite obtener la cantidad de libros de la biblioteca
+     * @return cantida de libros en la biblioteca
+     */
     public int getCantidadLibros() {
         return cantidadLibros;
     }
 
+    /**
+     * Metodo que permite modificar la cantidad de libros de la biblioteca
+     * @param cantidadLibros
+     */
     public void setCantidadLibros(int cantidadLibros) {
         this.cantidadLibros = cantidadLibros;
     }
 
+    /**
+     * Metodo que permite obtener la direccion de la biblioteca
+     * @return la direccion de la biblioteca
+     */
     public String getDireccion() {
         return Direccion;
     }
 
+    /**
+     * Metodo que permite modificar la direccion de la biblioteca
+     * @param direccion
+     */
     public void setDireccion(String direccion) {
         this.Direccion = direccion;
     }
 
+    /**
+     * Metodo que permite obtener la coleccion de estudiantes de la biblioteca
+     * @return coleccion de estudiantes
+     */
     public Collection<Estudiente> getEstudientes() {
         return estudientes;
     }
 
+    /**
+     * Metodo que permite modificar la coleccion de estudiantes de la biblioteca
+     * @param estudientes
+     */
     public void setEstudientes(Collection<Estudiente> estudientes) {
         this.estudientes = estudientes;
     }
 
+    /**
+     * Metodo que permite obtener la coleccion de biblotecarios de la biblioteca
+     * @return coleccion de biblotecarios
+     */
     public Collection<Bibliotecario> getBibliotecarios() {
         return bibliotecarios;
     }
 
+    /**
+     *Metodo que permite modificar la coleccion de biblotecarios de la biblioteca
+     * @param bibliotecarios
+     */
     public void setBibliotecarios(Collection<Bibliotecario> bibliotecarios) {
         this.bibliotecarios = bibliotecarios;
     }
 
+    /**
+     * Metodo que permite obtener la coleccion de libros de la biblioteca
+     * @return coleccion de libros
+     */
     public Collection<Libro> getLibros() {
         return libros;
     }
 
+    /**
+     * Metodo que permite modificar la coleccion de libros de la biblioteca
+     * @param libros
+     */
     public void setLibros(List<Libro> libros) {
         this.libros = libros;
     }
 
+    /**
+     * Metodo que permite obtener la coleccion de prestámos de la biblioteca
+     * @return Coleccion de prestámos
+     */
     public Collection<Prestamo> getPrestamos() {
         return prestamos;
     }
 
+    /**
+     * Metodo que permite modificar la coleccion de prestámos de la biblioteca
+     * @param prestamos
+     */
     public void setPrestamos(Collection<Prestamo> prestamos) {
         this.prestamos = prestamos;
     }
 
-    public Collection<DetallePrestamo> getDetallePrestamos() {
-        return detallePrestamos;
-    }
-
-    public void setDetallePrestamos(Collection<DetallePrestamo> detallePrestamos) {
-        this.detallePrestamos = detallePrestamos;
-    }
 
     /**
      * metodo para verificar que no hayan 2 estudiantes repetidos
@@ -233,7 +297,7 @@ public class Biblioteca {
      * Metodo que permite reemplazar la información un libro por otro nuevo
      * @param ISBN
      * @param nuevoLibro
-     * @return
+     * @return el reemplazo del libro
      */
     public boolean reemplazarLibro(String ISBN, Libro nuevoLibro) {
         if (ISBN == null || nuevoLibro == null) {
@@ -311,7 +375,7 @@ public class Biblioteca {
 
     /**
      * Metodo que permite encontrar la información del estudiante con más préstamos
-     * @return
+     * @return el estudiante con más prestámos
      */
     public Estudiente estudianteConMasPrestamos() {
         Estudiente estudianteConMas = null;

@@ -9,6 +9,14 @@ public class Bibliotecario extends Persona {
     private Collection<Prestamo> prestamos;
     private int PrestamosRealizados;
 
+    /**
+     * Metodo constructor de la clase Bibliotecario
+     * @param nombre
+     * @param cedula
+     * @param telefono
+     * @param correo
+     * @param antiguedad
+     */
     public Bibliotecario(String nombre, String cedula, String telefono, String correo, int antiguedad) {
         super(nombre, cedula, telefono, correo);
         this.salario = 0;
@@ -17,28 +25,59 @@ public class Bibliotecario extends Persona {
         this.PrestamosRealizados = 0;
     }
 
+    /**
+     * Metod que permite obtener el salario del biblotecario
+     * @return el salario del biblotecario
+     */
     public int getSalario() {
         return salario;
     }
 
+    /**
+     * Metod que permite obtener los años de antiguedad del biblotecario
+     * @return los años de antiguedad del biblotecario
+     */
     public int getAntiguedad() {
         return antiguedad;
     }
 
+    /**
+     * Metodo que permite modicar los años de antiguedad del biblotecario
+     * @param antiguedad
+     */
     public void setAntiguedad(int antiguedad) {
         this.antiguedad = antiguedad;
     }
 
+    /**
+     * Metodo que permite obtener la coleccion de préstamos del biblotecario
+     * @return la coleccion de préstamos
+     */
     public Collection<Prestamo> getPrestamos() {
         return prestamos;
     }
 
-    public void incrementarPrestamos() {
-        this.PrestamosRealizados++;
+    /**
+     * Metodo que permite modificar la coleccion de préstamos del biblotecario
+     * @param prestamos
+     */
+    public void setPrestamos(Collection<Prestamo> prestamos) {
+        this.prestamos = prestamos;
     }
 
+    /**
+     * Metod que permite obtener los préstamos realizados del biblotecario
+     * @return préstamos realizados por el biblotecario
+     */
     public int getPrestamosRealizados() {
         return PrestamosRealizados;
+    }
+
+    /**
+     * Metodo que incrementa los préstamos
+     */
+    public void incrementarPrestamos() {
+        this.PrestamosRealizados++;
     }
 
     /**

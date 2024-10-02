@@ -53,7 +53,7 @@ public class Libro {
     }
 /**
  * Metodo para obtener el Codigo
- * @return
+ * @return codigo del libro
  */
     public String getCodigo() {
         return Codigo;
@@ -67,7 +67,7 @@ public class Libro {
     }
 /**
  * Metodo para obtener el ISBN
- * @return
+ * @return ISBN del codigo
  */
     public String getISBN() {
         return ISBN;
@@ -81,7 +81,7 @@ public class Libro {
     }
 /**
  * Metodo para obtener el Autor
- * @return
+ * @return Autor del libro
  */
     public String getAutor() {
         return Autor;
@@ -95,7 +95,7 @@ public class Libro {
     }
 /**
  * Metodo para obtener el Titulo
- * @return
+ * @return Titulo del libro
  */
     public String getTitulo() {
         return Titulo;
@@ -109,7 +109,7 @@ public class Libro {
     }
 /**
  * Metodo para obtener la Editorial
- * @return
+ * @return Editorial que distribuye el libro
  */
     public String getEditorial() {
         return Editorial;
@@ -123,7 +123,7 @@ public class Libro {
     }
 /**
  * Metodo para obtener la fecha
- * @return
+ * @return fecha
  */
     public LocalDate getFecha() {
         return fecha;
@@ -137,7 +137,7 @@ public class Libro {
     }
 /**
  * Metodo para obtener las Unidades Disponibles
- * @return
+ * @return unidades disponibles
  */
     public int getUnidadesDisponibles() {
         return UnidadesDisponibles;
@@ -151,7 +151,7 @@ public class Libro {
     }
 /**
  * Metodo para obtener el estado
- * @return
+ * @return estado del libro
  */
     public Libro.Estado getEstado() {
         return Estado;

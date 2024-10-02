@@ -18,7 +18,7 @@ public class DetallePrestamo {
     }
 /**
  * Metodo para obtener la cantidad
- * @return
+ * @return cantidad
  */
     public int getCantidad() {
         return cantidad;
@@ -32,7 +32,7 @@ public class DetallePrestamo {
     }
 /**
  * Metodo para obtener el libro
- * @return
+ * @return Libro
  */
     public Libro getLibro() {
         return libro;
@@ -46,7 +46,7 @@ public class DetallePrestamo {
     }
 /**
  * Metodo para obtener el subtotal
- * @return
+ * @return subtotal
  */
     public double getSubTotal() {
         return subTotal;

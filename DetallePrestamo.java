@@ -16,23 +16,38 @@ public class DetallePrestamo {
         this.libro=libro;
         this.subTotal=0;
     }
-
+/**
+ * Metodo para obtener la cantidad
+ * @return
+ */
     public int getCantidad() {
         return cantidad;
     }
-
+/**
+ * Metodo para modificar la cantidad
+ * @param cantidad
+ */
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
-
+/**
+ * Metodo para obtener el libro
+ * @return
+ */
     public Libro getLibro() {
         return libro;
     }
-
+/**
+ * Metodo para modificar el libro
+ * @param libro
+ */
     public void setLibro(Libro libro) {
         this.libro = libro;
     }
-
+/**
+ * Metodo para obtener el subtotal
+ * @return
+ */
     public double getSubTotal() {
         return subTotal;
     }

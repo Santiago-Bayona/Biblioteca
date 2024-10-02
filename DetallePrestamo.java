@@ -5,6 +5,12 @@ public class DetallePrestamo {
     private double subTotal;
     private Libro libro;
 
+
+    /**
+     * Metodo constructor de la clase detalleprestamo
+     * @param cantidad
+     * @param libro
+     */  
     public DetallePrestamo(int cantidad, Libro libro){
         this.cantidad=cantidad;
         this.libro=libro;
